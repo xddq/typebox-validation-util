@@ -49,8 +49,8 @@ What this small package does is:
   the greatest performance the typebox schemas have to be compiled once. This
   compilation is only done once for any given Schema and will be cached throughout
   the application lifetime. Subsequent validations use the cached version. For
-  some performane insights you can check out this benchmark
-  [https://moltar.github.io/typescript-runtime-type-benchmarks/].
+  some performane insights you can check out [this
+  benchmark](https://moltar.github.io/typescript-runtime-type-benchmarks/).
 - Uses an approach with errors that the typebox package does not. The
   `validateData` function throws a normal `Error` if the valdation fails. It
   contains a `message` and `stack` with all required details for debugging the
@@ -71,6 +71,7 @@ const LoginInputSchema = Type.Object(
     name: Type.String({ format: "email" }),
     password: Type.String({ minLength: 8 }),
   },
+  // specify $id in your schema to enable caching of compiled schema
   { $id: "LoginInputSchema" },
 );
 
@@ -80,7 +81,7 @@ const demo = () => {
     name: "test@example.org",
     password: "12345678",
   } as unknown;
-  const data = validateData(invalidatedData, LoginInputSchema, []);
+  const data = validateData(invalidatedData, LoginInputSchema);
   console.log("validated data successfully: ", JSON.stringify(data, null, 2));
 
   // this will throw an error
@@ -88,7 +89,7 @@ const demo = () => {
     name: "test@example,org",
     password: "1234567",
   } as unknown;
-  const data2 = validateData(invalidatedData2, LoginInputSchema, []);
+  const data2 = validateData(invalidatedData2, LoginInputSchema);
   console.log("validated data successfully: ", JSON.stringify(data2, null, 2));
 };
 
@@ -133,12 +134,12 @@ either side.
 Please always create tests for new features that are implemented. This will
 decrease mental overhead for reviewing and developing in the long run.
 
-### DEV/CONTRIBUTOR quickstart
+### Dev Quickstart
 
 - `yarn`
 - `corepack enable`
 
-### Code coverage
+### Code Coverage
 
 TODO: add code coveage stuff.
 

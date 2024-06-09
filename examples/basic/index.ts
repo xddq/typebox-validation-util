@@ -6,6 +6,7 @@ const LoginInputSchema = Type.Object(
     name: Type.String({ format: "email" }),
     password: Type.String({ minLength: 8 }),
   },
+  // specify $id in your schema to enable caching of compiled schema
   { $id: "LoginInputSchema" },
 );
 
@@ -15,7 +16,7 @@ const demo = () => {
     name: "test@example.org",
     password: "12345678",
   } as unknown;
-  const data = validateData(invalidatedData, LoginInputSchema, []);
+  const data = validateData(invalidatedData, LoginInputSchema);
   console.log("validated data successfully: ", JSON.stringify(data, null, 2));
 
   // this will throw an error
@@ -23,7 +24,7 @@ const demo = () => {
     name: "test@example,org",
     password: "1234567",
   } as unknown;
-  const data2 = validateData(invalidatedData2, LoginInputSchema, []);
+  const data2 = validateData(invalidatedData2, LoginInputSchema);
   console.log("validated data successfully: ", JSON.stringify(data2, null, 2));
 };
 

@@ -8,6 +8,7 @@ const LoginInputSchema = Type.Object(
     name: Type.String({ format: "email" }),
     password: Type.String({ minLength: 8 }),
   },
+  // specify $id in your schema to enable caching of compiled schema
   { $id: "LoginInputSchema" },
 );
 
