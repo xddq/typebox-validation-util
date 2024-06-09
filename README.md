@@ -27,11 +27,7 @@ using npm `npm i typebox-validation-util typebox@^0.32.31`
 
 You want to validate unknown data (probably anything sent over the wire) in a
 fast and convenient way and are using
-[typebox](https://github.com/sinclairzx81/typebox) for this..
-
-- It should also fine if you are just now learning about the 3-4 times faster
-  [ajv](https://github.com/ajv-validator/ajv) alternative which **also infers
-  correct typescript types** after validating data.
+[typebox](https://github.com/sinclairzx81/typebox) for this.
 
 ## Explanation
 
