@@ -12,6 +12,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
+      - name: Use yarn via corepack
+        run: corepack enable
       - name: Install Dependencies
         run: yarn --immutable
       - name: Lint

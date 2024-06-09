@@ -17,6 +17,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Use yarn via corepack
+        run: corepack enable
       - name: Install Dependencies
         run: yarn --immutable
       - name: Build
