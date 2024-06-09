@@ -1,10 +1,18 @@
-# Example
+# typebox-validation-util example
 
-When schema2typebox is installed (simply issue npm i -g schema2typebox to do
-so), clone the repo, cd into this directory and:
+## Setup
 
-- Remove the old generated-typebox.ts file `rm generated-typebox.ts`
-- Use schema2typebox to generate the typebox code based on the schema.json file.
-  `schema2typebox`
-- generated-typebox.ts should now again exist in the folder
-- done 🎉
+- Install by running `yarn`
+- Start the program with `yarn start`
+- You should get a console output like that:
+
+```
+
+validated data successfully:  {
+  "name": "test@example.org",
+  "password": "12345678"
+}
+error message:  "schema: {\"format\":\"email\",\"type\":\"string\"} Expected string to match 'email' format path: /name value: \"test@example,org\". Expected string length greater or equal to 8 path: /password value: \"1234567\""
+error stack:  "Error: schema: {\"format\":\"email\",\"type\":\"string\"} Expected string to match 'email' format path: /name value: \"test@example,org\". Expected string length greater or equal to 8 path: /password value: \"1234567\"\n    at validateData (/home/xddq/progproj/... imagine rest of stack here
+
+```
