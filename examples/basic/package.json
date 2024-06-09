@@ -7,6 +7,6 @@
   "dependencies": {
     "@sinclair/typebox": "^0.32.31",
     "tsx": "4.15.1",
-    "typebox-validation-util": "^1.0.0"
+    "typebox-validation-util": "^1.0.1"
   }
 }

@@ -405,6 +405,7 @@ __metadata:
     "@types/express": 4.17.21
     express: 4.19.2
     tsx: 4.15.1
+    typebox-validation-util: ^1.0.1
   languageName: unknown
   linkType: soft
 
@@ -1733,6 +1734,15 @@ __metadata:
     media-typer: 0.3.0
     mime-types: ~2.1.24
   checksum: 2c8e47675d55f8b4e404bcf529abdf5036c537a04c2b20177bcf78c9e3c1da69da3942b1346e6edb09e823228c0ee656ef0e033765ec39a70d496ef601a0c657
+  languageName: node
+  linkType: hard
+
+"typebox-validation-util@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "typebox-validation-util@npm:1.0.1"
+  peerDependencies:
+    "@sinclair/typebox": ^0.32.31
+  checksum: 5ec27d6600d496c97ae627f753d125f061e92b41d9f73e2a743a5d14e40b50fbd94d60d79c7d36aa8d3198501daead8ba1cb1fc5356c51c73cf6b48f491a06b2
   languageName: node
   linkType: hard
 

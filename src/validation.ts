@@ -9,7 +9,7 @@ const CUT_AFTER_X_ERRORS = 10;
 
 const cachedSchemas = new Map<string, TypeCheck<any>>();
 
-export const getCompiledSchema = <T extends TSchema>(
+const getCompiledSchema = <T extends TSchema>(
   schema: T,
   references: TSchema[] = [],
 ) => {
@@ -27,7 +27,18 @@ export const getCompiledSchema = <T extends TSchema>(
 };
 
 /**
- * TODO: comment this
+ * Validates the given data based on the given schema and its possibly required
+ * references. For highly improved validation speed the given schema will be
+ * compiled for validation. The compilation step is costly and therefore cached
+ * in-memory after the first validation for every schema. Caching is only
+ * possible if the given schema contains a unique '$id' attribute field at the
+ * top level (which is a common approach anyway).
+ *
+ * @throws Error If the validation fails. The error contains all required
+ * information to investigate the reason of failure. The '.message' attribute
+ * contains one complete error message for each validation failure that occured.
+ * The error messages are separated by '. '. The '.stack' attribute contains the
+ * content of the '.message' attribute and the stack trace for the error.
  */
 export const validateData = <T extends TSchema>(
   data: unknown,

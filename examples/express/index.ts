@@ -1,7 +1,5 @@
-// TODO: adapt to "typebox-validation-util"
-// import { Type, validateData } from "typebox-validation-util";
-import { validateData } from "../../src/index";
 import { Type } from "@sinclair/typebox";
+import { validateData } from "typebox-validation-util";
 import { ErrorRequestHandler, Request, Response } from "express";
 import express from "express";
 
