@@ -285,6 +285,7 @@ __metadata:
   dependencies:
     "@sinclair/typebox": ^0.32.31
     tsx: 4.15.1
+    typebox-validation-util: ^1.0.0
   languageName: unknown
   linkType: soft
 
@@ -1075,6 +1076,15 @@ __metadata:
   bin:
     tsx: dist/cli.mjs
   checksum: 01edc174e7b73e1660b5eaf5cc893f2725bebb785f7267f77b08a2bbbdad3dd3bd896180911736c3ab2cf61dd3ccedad049a2409a4bbc78c8d9f34469917fffc
+  languageName: node
+  linkType: hard
+
+"typebox-validation-util@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "typebox-validation-util@npm:1.0.0"
+  peerDependencies:
+    "@sinclair/typebox": ^0.32.31
+  checksum: aeff86713d114d7fe4987165bb89e817b4b62a832e25e93a638f773dbe07993b5152209175bfd9b5a820f01f8164419432edbd96e80d0b29d30ca2799feddf5b
   languageName: node
   linkType: hard
 

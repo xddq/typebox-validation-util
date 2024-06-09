@@ -1,6 +1,6 @@
 {
   "name": "typebox-validation-util",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/src/index.js",
   "description": "Validate data using typebox in a single line",
   "source": "dist/src/index.js",
@@ -15,7 +15,7 @@
     "format:check": "prettier . --check",
     "lint": "eslint . --fix",
     "lint:check": "eslint .",
-    "start": "node --enable-source-maps ./dist/index.js",
+    "start": "node --enable-source-maps ./dist/src/index.js",
     "test": "jest --runInBand ."
   },
   "repository": {

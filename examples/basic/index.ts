@@ -1,6 +1,4 @@
-// TODO: adapt to "typebox-validation-util"
-// import { Type, validateData } from "typebox-validation-util";
-import { validateData } from "../../src/index";
+import { validateData } from "typebox-validation-util";
 import { Type } from "@sinclair/typebox";
 
 const LoginInputSchema = Type.Object(

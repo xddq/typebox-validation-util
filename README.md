@@ -7,14 +7,14 @@ Validate data using typebox in a single line
 </p>
 
 <p align="center">
-  <a href="https://github.com/xddq/schema2typebox/blob/main/LICENSE">
-    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="ts2typebox is released under the MIT license." />
+  <a href="https://github.com/xddq/typebox-validation-util/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="typebox-validation-util is released under the MIT license." />
   </a>
-  <a href="https://www.npmjs.org/package/schema2typebox">
-    <img src="https://img.shields.io/npm/v/schema2typebox?color=brightgreen&label=npm%20package" alt="Current npm package version." />
+  <a href="https://www.npmjs.org/package/typebox-validation-util">
+    <img src="https://img.shields.io/npm/v/typebox-validation-util?color=brightgreen&label=npm%20package" alt="Current npm package version." />
   </a>
-  <a href="https://github.com/xddq/schema2typebox/actions/workflows/buildAndTest.yaml">
-    <img src="https://github.com/xddq/schema2typebox/actions/workflows/buildAndTest.yaml/badge.svg" alt="State of Github Action" />
+  <a href="https://github.com/xddq/typebox-validation-util/actions/workflows/buildAndTest.yaml">
+    <img src="https://github.com/xddq/typebox-validation-util/actions/workflows/buildAndTest.yaml/badge.svg" alt="State of Github Action" />
   </a>
 </p>
 
