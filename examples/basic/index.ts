@@ -1,14 +1,10 @@
-import { validateData } from "typebox-validation-util";
 import { Type } from "@sinclair/typebox";
+import { validateData } from "typebox-validation-util";
 
-const LoginInputSchema = Type.Object(
-  {
-    name: Type.String({ format: "email" }),
-    password: Type.String({ minLength: 8 }),
-  },
-  // specify $id in your schema to enable caching of compiled schema
-  { $id: "LoginInputSchema" },
-);
+const LoginInputSchema = Type.Object({
+  name: Type.String({ format: "email" }),
+  password: Type.String({ minLength: 8 }),
+});
 
 const demo = () => {
   // this will pass without errors

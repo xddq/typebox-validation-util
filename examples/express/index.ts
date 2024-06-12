@@ -3,14 +3,10 @@ import { validateData } from "typebox-validation-util";
 import { ErrorRequestHandler, Request, Response } from "express";
 import express from "express";
 
-const LoginInputSchema = Type.Object(
-  {
-    name: Type.String({ format: "email" }),
-    password: Type.String({ minLength: 8 }),
-  },
-  // specify $id in your schema to enable caching of compiled schema
-  { $id: "LoginInputSchema" },
-);
+const LoginInputSchema = Type.Object({
+  name: Type.String({ format: "email" }),
+  password: Type.String({ minLength: 8 }),
+});
 
 export const app = express();
 app.use(express.json());

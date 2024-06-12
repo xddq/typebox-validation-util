@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-Validate data using typebox in a single line
+Fast and convenient data validation with typebox in a single line
 </p>
 
 <p align="center">
@@ -20,41 +20,45 @@ Validate data using typebox in a single line
 
 ## Installation
 
-When using yarn `yarn add typebox-validation-util typebox@^0.32.31` or when
-using npm `npm i typebox-validation-util typebox@^0.32.31`
+When using yarn: `yarn add typebox-validation-util typebox@^0.32.31` or when
+using npm: `npm i typebox-validation-util typebox@^0.32.31`
 
 ## Use Case
 
-You want to validate unknown data (probably anything sent over the wire) in a
-fast and convenient way and are using
-[typebox](https://github.com/sinclairzx81/typebox) for this.
+You want to validate unknown data in one of the fastest and most convenient
+ways. You are using the excellent
+[typebox](https://github.com/sinclairzx81/typebox) library and want to avoid any
+unnecessary boilerplate.
 
-## Explanation
+## Features
 
-What this small package does is:
+typebox-validation-util implements convenient defaults for you so you don't have
+to do extra manual work. This package:
 
-- Gives the user an easy way to validate typebox data via **the only** exported
-  function `validateData`.
-- Adds commonly used string formats such as `email` or `ipv4` which are JSON
-  schema draft-07 (current target of typebox) compliant. These would otherwise
-  have to be added manually, see
-  [here](https://github.com/sinclairzx81/typebox/issues/879) for the issue. Check
-  the formats.ts file for what is added. If you want any other formats added, feel
-  free to create an issue and a followup PR.
-- Caches compiled schemas if they have a value in their `$id` field. To yield
-  the greatest performance the typebox schemas have to be compiled once. This
-  compilation is only done once for any given Schema and will be cached throughout
-  the application lifetime. Subsequent validations use the cached version. For
-  some performane insights you can check out [this
-  benchmark](https://moltar.github.io/typescript-runtime-type-benchmarks/).
-- Uses an approach with errors that the typebox package does not. The
-  `validateData` function throws a normal `Error` if the valdation fails. It
-  contains a `message` and `stack` with all required details for debugging the
-  error in a readable manner.
-  - Using this approach you can just set up global error handling (as one would
-    normally/typically do in most nodejs projects) and let the thrown error
-    bubble up without duplicating any try catch or manual throws or whatsoever. For
-    more info just check and run the examples.
+- Gives you an easy and straight forward way to validate typebox data via **the
+  only exported function of this package** `validateData`. 🌟
+- Adds commonly used string formats such as `email` or `ipv4` to validate
+  against. 🛠️
+  - These would otherwise have to be added manually, see
+    [here](https://github.com/sinclairzx81/typebox/issues/879) for the issue.
+    Check the formats.ts file for what is added.
+  - If you want any other formats added, feel free to create an issue and a
+    followup PR.
+- Yields best validation performance. 🚀
+  - Fast validation is guaranteed by compiling the schema and validating data
+    only against compiled schemas. The compiled schema is cached so that future
+    validations don't have to repeat the compilation step.
+  - To better understand the huge performance differences for compiled schemas,
+    you can check out [this
+    benchmark](https://moltar.github.io/typescript-runtime-type-benchmarks/). See
+    '@sinclair/typebox-(just-in-time)' which e.g. is twice as fast as ajv when it
+    comes to loose asertion.
+- Uses _typical_ nodejs error handling by throwing an error if validating the
+  data fails. ✅
+  - The Error is a typical nodejs `Error`. It contains a `message` and `stack`
+    with all required details for debugging the error in a readable manner.
+  - By default typebox would return `ValueError` values after you specifically
+    request them by calling a separate function after validating.
 
 ## Examples
 
@@ -62,14 +66,10 @@ What this small package does is:
 import { Type } from "@sinclair/typebox";
 import { validateData } from "typebox-validation-util";
 
-const LoginInputSchema = Type.Object(
-  {
-    name: Type.String({ format: "email" }),
-    password: Type.String({ minLength: 8 }),
-  },
-  // specify $id in your schema to enable caching of compiled schema
-  { $id: "LoginInputSchema" },
-);
+const LoginInputSchema = Type.Object({
+  name: Type.String({ format: "email" }),
+  password: Type.String({ minLength: 8 }),
+});
 
 const demo = () => {
   // this will pass without errors
@@ -137,14 +137,17 @@ decrease mental overhead for reviewing and developing in the long run.
 
 ### Code Coverage
 
-TODO: add code coveage stuff.
+TODO:
 
-### Similar Projects
+- add tests
+- add code coveage stuff.
+
+## Similar Projects
 
 - [typebox-validators](https://github.com/jtlapp/typebox-validators) which adds
-  some functionality to the validation but keeps the error handling similar.
-  Also provides many optional opt-ins for default configuration.
+  some additional functionality to the validation but keeps the error handling
+  similar to the approach of typebox.
 
-### Template Repo
+## Template Repo
 
 Template for this repo was taken from [here](https://github.com/xddq/nodejs-typescript-modern-starter).

@@ -1,26 +1,19 @@
 import { type TSchema } from "@sinclair/typebox";
 import { Value, type ValueError } from "@sinclair/typebox/value";
 import { TypeCompiler, type TypeCheck } from "@sinclair/typebox/compiler";
-// sets up string formats
-import "./formats";
 
-// const CUT_AFTER_X_ERRORS = 1;
 const CUT_AFTER_X_ERRORS = 10;
 
-const cachedSchemas = new Map<string, TypeCheck<any>>();
+const cachedSchemas = new Map<TSchema, TypeCheck<any>>();
 
 const getCompiledSchema = <T extends TSchema>(
   schema: T,
   references: TSchema[] = [],
 ) => {
-  if (schema.$id === undefined) {
-    return TypeCompiler.Compile(schema, references);
-  }
-
-  const cachedSchema = cachedSchemas.get(schema.$id);
+  const cachedSchema = cachedSchemas.get(schema);
   if (cachedSchema === undefined) {
     const compiledSchema = TypeCompiler.Compile(schema, references);
-    cachedSchemas.set(schema.$id, compiledSchema);
+    cachedSchemas.set(schema, compiledSchema);
     return compiledSchema;
   }
   return cachedSchema as TypeCheck<T>;
@@ -30,9 +23,7 @@ const getCompiledSchema = <T extends TSchema>(
  * Validates the given data based on the given schema and its possibly required
  * references. For highly improved validation speed the given schema will be
  * compiled for validation. The compilation step is costly and therefore cached
- * in-memory after the first validation for every schema. Caching is only
- * possible if the given schema contains a unique '$id' attribute field at the
- * top level (which is a common approach anyway).
+ * in-memory after the first validation for every schema.
  *
  * @throws Error If the validation fails. The error contains all required
  * information to investigate the reason of failure. The '.message' attribute
