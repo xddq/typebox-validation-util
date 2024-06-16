@@ -1,6 +1,7 @@
 import { describe, it } from "@jest/globals";
 import { Type } from "@sinclair/typebox";
 import { CUT_AFTER_X_ERRORS, validateData } from "../src/validation";
+import { TypeCompiler } from "@sinclair/typebox/compiler";
 
 describe("when validating", () => {
   it("validates valid data", () => {
@@ -33,9 +34,29 @@ describe("when validating", () => {
         const matches = err.message.match(/schema: /g) ?? [];
         expect(matches.length).toBe(CUT_AFTER_X_ERRORS);
       }
-      expect(() => {
-        return validateData(data, schema);
-      }).toThrow();
     });
+  });
+  it("uses cached schema for subsequent validations", () => {
+    const spy = jest.spyOn(TypeCompiler, "Compile");
+    expect(spy).toHaveBeenCalledTimes(0);
+
+    const schema = Type.Object({ name: Type.String() });
+    const data = { name: "test" };
+    expect(() => {
+      return validateData(data, schema);
+    }).not.toThrow();
+    expect(spy).toHaveBeenCalledTimes(1);
+
+    // The compiled schema is expected to be cached after the first validateData
+    // call for each schema. Therefore `TypeCompiler.Compile` should not be
+    // called for subsequent calls to validateData.
+    expect(() => {
+      return validateData(data, schema);
+    }).not.toThrow();
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(() => {
+      return validateData(data, schema);
+    }).not.toThrow();
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });

@@ -1,3 +1,12 @@
+# 1.0.6
+
+- Fixes wrong link to github in package.json.
+
+# 1.0.5
+
+- Fixes wrong package name in installation instruction. From "typebox" to
+  "@sinclair/typebox"
+
 # 1.0.4
 
 - Add correct 'schema' into the error message for each separate error.
