@@ -20,8 +20,8 @@ Fast and convenient data validation with typebox in a single line
 
 ## Installation
 
-When using yarn: `yarn add typebox-validation-util typebox@^0.32.31` or when
-using npm: `npm i typebox-validation-util typebox@^0.32.31`
+When using yarn: `yarn add typebox-validation-util @sinclair/typebox@^0.32.31` or when
+using npm: `npm i typebox-validation-util @sinclair/typebox@^0.32.31`
 
 ## Use Case
 
