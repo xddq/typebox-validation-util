@@ -6,12 +6,16 @@ describe("when validating", () => {
   it("validates valid data", () => {
     const schema = Type.Object({ name: Type.String() });
     const data = { name: "test" };
-    expect(() => validateData(data, schema)).not.toThrow();
+    expect(() => {
+      return validateData(data, schema);
+    }).not.toThrow();
   });
   it("throws on invalid data", () => {
     const schema = Type.Object({ name: Type.String() });
     const data = { name: 1 };
-    expect(() => validateData(data, schema)).toThrow();
+    expect(() => {
+      return validateData(data, schema);
+    }).toThrow();
   });
   describe("when handling invalid data", () => {
     it(`the resulting error is cut after ${CUT_AFTER_X_ERRORS} errors`, () => {
@@ -29,7 +33,9 @@ describe("when validating", () => {
         const matches = err.message.match(/schema: /g) ?? [];
         expect(matches.length).toBe(CUT_AFTER_X_ERRORS);
       }
-      expect(() => validateData(data, schema)).toThrow();
+      expect(() => {
+        return validateData(data, schema);
+      }).toThrow();
     });
   });
 });

@@ -4,11 +4,12 @@ import { TypeCompiler, type TypeCheck } from "@sinclair/typebox/compiler";
 
 export const CUT_AFTER_X_ERRORS = 10;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const cachedSchemas = new Map<TSchema, TypeCheck<any>>();
 
 const getCompiledSchema = <T extends TSchema>(
   schema: T,
-  references: TSchema[] = [],
+  references: TSchema[] = []
 ) => {
   const cachedSchema = cachedSchemas.get(schema);
   if (cachedSchema === undefined) {
@@ -34,7 +35,7 @@ const getCompiledSchema = <T extends TSchema>(
 export const validateData = <T extends TSchema>(
   data: unknown,
   schema: T,
-  references: TSchema[] = [],
+  references: TSchema[] = []
 ) => {
   const compiledSchema = getCompiledSchema(schema, references);
   if (compiledSchema.Check(data)) {
@@ -49,7 +50,7 @@ export const validateData = <T extends TSchema>(
     // and a specific part of the schema fails against all of them.
     if (idx === CUT_AFTER_X_ERRORS) {
       errMessages.push(
-        `Did cut the error message after ${CUT_AFTER_X_ERRORS} errors trying to avoid out of memory issues when having many errors.`,
+        `Did cut the error message after ${CUT_AFTER_X_ERRORS} errors trying to avoid out of memory issues when having many errors.`
       );
       break;
     }
@@ -64,5 +65,7 @@ export const validateData = <T extends TSchema>(
  * error.
  */
 const makeError = (err: ValueError) => {
-  return `schema: ${JSON.stringify(err.schema)} msg: ${err.message} path: ${err.path} value: ${JSON.stringify(err.value)}`;
+  return `schema: ${JSON.stringify(err.schema)} msg: ${err.message} path: ${
+    err.path
+  } value: ${JSON.stringify(err.value)}`;
 };

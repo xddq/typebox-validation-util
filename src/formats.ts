@@ -13,5 +13,7 @@ const supportedFormats = {
 };
 
 Object.entries(supportedFormats).map(([format, regex]) => {
-  FormatRegistry.Set(format, (value) => regex.test(value));
+  FormatRegistry.Set(format, (value) => {
+    return regex.test(value);
+  });
 });
