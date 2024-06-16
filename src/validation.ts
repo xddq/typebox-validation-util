@@ -2,13 +2,14 @@ import { type TSchema } from "@sinclair/typebox";
 import { Value, type ValueError } from "@sinclair/typebox/value";
 import { TypeCompiler, type TypeCheck } from "@sinclair/typebox/compiler";
 
-const CUT_AFTER_X_ERRORS = 10;
+export const CUT_AFTER_X_ERRORS = 10;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const cachedSchemas = new Map<TSchema, TypeCheck<any>>();
 
 const getCompiledSchema = <T extends TSchema>(
   schema: T,
-  references: TSchema[] = [],
+  references: TSchema[] = []
 ) => {
   const cachedSchema = cachedSchemas.get(schema);
   if (cachedSchema === undefined) {
@@ -34,7 +35,7 @@ const getCompiledSchema = <T extends TSchema>(
 export const validateData = <T extends TSchema>(
   data: unknown,
   schema: T,
-  references: TSchema[] = [],
+  references: TSchema[] = []
 ) => {
   const compiledSchema = getCompiledSchema(schema, references);
   if (compiledSchema.Check(data)) {
@@ -44,18 +45,16 @@ export const validateData = <T extends TSchema>(
   const errMessages: string[] = [];
   let idx = 0;
   for (const err of errors) {
-    if (idx === 0) {
-      errMessages.push(makeError(err, true));
-    } else if (idx === CUT_AFTER_X_ERRORS) {
-      // Some error reporting platforms (e.g. sentry) can set error length
-      // limitations. To avoid this, cut after 10 errors. Note: This is not set
-      // in stone. Perhaps make this configurable if it yields issues.
+    // Restrict size of resulting error message to avoid some out of memory
+    // issues where big payloads (e.g. lists with many elements) get evaluated
+    // and a specific part of the schema fails against all of them.
+    if (idx === CUT_AFTER_X_ERRORS) {
       errMessages.push(
-        `Did cut the error message after ${CUT_AFTER_X_ERRORS} errors to avoid ending up with a huge error string`,
+        `Did cut the error message after ${CUT_AFTER_X_ERRORS} errors trying to avoid out of memory issues when having many errors.`
       );
-    } else {
-      errMessages.push(makeError(err));
+      break;
     }
+    errMessages.push(makeError(err));
     idx = idx + 1;
   }
   throw new Error(errMessages.join(". "));
@@ -65,9 +64,8 @@ export const validateData = <T extends TSchema>(
  * Creates user-readable error with all infos necessary to investigate the
  * error.
  */
-const makeError = (err: ValueError, first = false) => {
-  if (first) {
-    return `schema: ${JSON.stringify(err.schema)} ${err.message} path: ${err.path} value: ${JSON.stringify(err.value)}`;
-  }
-  return `${err.message} path: ${err.path} value: ${JSON.stringify(err.value)}`;
+const makeError = (err: ValueError) => {
+  return `schema: ${JSON.stringify(err.schema)} msg: ${err.message} path: ${
+    err.path
+  } value: ${JSON.stringify(err.value)}`;
 };

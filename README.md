@@ -114,8 +114,8 @@ validated data successfully:  {
   "password": "12345678"
 }
 
-error message:  "schema: {\"format\":\"email\",\"type\":\"string\"} Expected string to match 'email' format path: /name value: \"test@example,org\". Expected string length greater or equal to 8 path: /password value: \"1234567\""
-error stack:  "Error: schema: {\"format\":\"email\",\"type\":\"string\"} Expected string to match 'email' format path: /name value: \"test@example,org\". Expected string length greater or equal to 8 path: /password value: \"1234567\"\n    at validateData (/home/xddq/progproj ... imagine rest of stack here)
+error message:  "schema: {\"format\":\"email\",\"type\":\"string\"} msg: Expected string to match 'email' format path: /name value: \"test@example,org\". schema: {\"minLength\":8,\"type\":\"string\"} msg: Expected string length greater or equal to 8 path: /password value: \"1234567\""
+error stack:  "Error: schema: {\"format\":\"email\",\"type\":\"string\"} msg: Expected string to match 'email' format path: /name value: \"test@example,org\". schema: {\"minLength\":8,\"type\":\"string\"} msg: Expected string length greater or equal to 8 path: /password value: \"1234567\"\n    at validateData (/home/xddq/... imagine rest of stack here
 
 ```
 
@@ -130,17 +130,13 @@ either side.
 Please always create tests for new features that are implemented. This will
 decrease mental overhead for reviewing and developing in the long run.
 
-### Dev Quickstart
-
-- `yarn`
-- `corepack enable`
-
 ### Code Coverage
 
-TODO:
-
-- add tests
-- add code coveage stuff.
+| File          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s |
+| ------------- | ------- | -------- | ------- | ------- | ----------------- |
+| All files     | 100     | 100      | 100     | 100     |
+| formats.ts    | 100     | 100      | 100     | 100     |
+| validation.ts | 100     | 100      | 100     | 100     |
 
 ## Similar Projects
 

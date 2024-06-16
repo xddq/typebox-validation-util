@@ -11,8 +11,8 @@
 
 ```
 
-Got error with stack:  Error: schema: {"format":"email","type":"string"} Expected string to match 'email' format path: /name value: "test@exmple,com". Expected string length greater or equal to 8 path: /password value: "1234567
-    at validateData (/home/xddq/progproj/... imagine rest of stack here)
+Got error with stack:  Error: schema: {"format":"email","type":"string"} msg: Expected string to match 'email' format path: /name value: "test@example,com". schema: {"minLength":8,"type":"string"} msg: Expected string length greater or equal to 8 path: /password value: "1234567"
+    at validateData (/home/xddq/... imagine rest of stack here)
 
 ```
 

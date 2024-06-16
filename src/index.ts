@@ -1,3 +1,3 @@
 // sets up string formats
 import "./formats";
-export * from "./validation";
+export { validateData } from "./validation";

@@ -1,3 +1,8 @@
+# 1.0.4
+
+- Add correct 'schema' into the error message for each separate error.
+  Previously only added the first 'schema'. [see](https://github.com/xddq/typebox-validation-util/pull/1)
+
 # 1.0.3
 
 - cache all schemas after first validation
