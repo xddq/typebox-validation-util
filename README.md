@@ -132,11 +132,10 @@ decrease mental overhead for reviewing and developing in the long run.
 
 ### Code Coverage
 
-| File          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Lines |
-| ------------- | ------- | -------- | ------- | ------- | --------------- |
+| File          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s |
+| ------------- | ------- | -------- | ------- | ------- | ----------------- |
 | All files     | 100     | 100      | 100     | 100     |
 | formats.ts    | 100     | 100      | 100     | 100     |
-| index.ts      | 100     | 100      | 100     | 100     |
 | validation.ts | 100     | 100      | 100     | 100     |
 
 ## Similar Projects
