@@ -114,8 +114,8 @@ validated data successfully:  {
   "password": "12345678"
 }
 
-error message:  "schema: {\"format\":\"email\",\"type\":\"string\"} Expected string to match 'email' format path: /name value: \"test@example,org\". Expected string length greater or equal to 8 path: /password value: \"1234567\""
-error stack:  "Error: schema: {\"format\":\"email\",\"type\":\"string\"} Expected string to match 'email' format path: /name value: \"test@example,org\". Expected string length greater or equal to 8 path: /password value: \"1234567\"\n    at validateData (/home/xddq/progproj ... imagine rest of stack here)
+error message:  "schema: {\"format\":\"email\",\"type\":\"string\"} msg: Expected string to match 'email' format path: /name value: \"test@example,org\". schema: {\"minLength\":8,\"type\":\"string\"} msg: Expected string length greater or equal to 8 path: /password value: \"1234567\""
+error stack:  "Error: schema: {\"format\":\"email\",\"type\":\"string\"} msg: Expected string to match 'email' format path: /name value: \"test@example,org\". schema: {\"minLength\":8,\"type\":\"string\"} msg: Expected string length greater or equal to 8 path: /password value: \"1234567\"\n    at validateData (/home/xddq/... imagine rest of stack here
 
 ```
 
