@@ -1,6 +1,6 @@
 {
   "name": "typebox-validation-util",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "dist/src/index.js",
   "description": "Validate data using typebox in a single line",
   "types": "dist/src/index.d.ts",

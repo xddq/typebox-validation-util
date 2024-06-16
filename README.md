@@ -130,17 +130,14 @@ either side.
 Please always create tests for new features that are implemented. This will
 decrease mental overhead for reviewing and developing in the long run.
 
-### Dev Quickstart
-
-- `yarn`
-- `corepack enable`
-
 ### Code Coverage
 
-TODO:
-
-- add tests
-- add code coveage stuff.
+| File          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Lines |
+| ------------- | ------- | -------- | ------- | ------- | --------------- |
+| All files     | 100     | 100      | 100     | 100     |
+| formats.ts    | 100     | 100      | 100     | 100     |
+| index.ts      | 100     | 100      | 100     | 100     |
+| validation.ts | 100     | 100      | 100     | 100     |
 
 ## Similar Projects
 
