@@ -1,6 +1,6 @@
 {
   "name": "typebox-validation-util",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "dist/src/index.js",
   "description": "Validate data using typebox in a single line",
   "types": "dist/src/index.d.ts",
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xddq/schema2typebox.git"
+    "url": "git+https://github.com/xddq/typebox-validation-util.git"
   },
   "keywords": [
     "JSON schema",
